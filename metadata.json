@@ -1,0 +1,7 @@
+{
+  "name": "AI Interviewer Pro",
+  "description": "An AI-powered technical interview question generator that analyzes resumes and creates tailored interview scenarios using Google Gemini.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
