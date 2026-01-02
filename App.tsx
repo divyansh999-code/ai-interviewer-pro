@@ -665,15 +665,6 @@ const AppContent: React.FC = () => {
           />
         </Suspense>
       )}
-
-      {/* Footer only on Landing page */}
-      {(view === 'landing') && (
-        <footer className="bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 py-8 safe-bottom mt-auto">
-          <div className="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500 dark:text-gray-400 flex flex-col items-center gap-4">
-            <p>© {new Date().getFullYear()} AI Interviewer Pro. Powered by Google Gemini.</p>
-          </div>
-        </footer>
-      )}
     </div>
   );
 };

@@ -2,10 +2,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Terminal, Github, Linkedin, Heart, 
-  ArrowUp, Mail, ArrowRight, Shield, Globe, Sparkles
+  ArrowUp, Mail, Globe
 } from 'lucide-react';
-import Button from './ui/Button'; 
-import Input from './ui/Input';
 
 // Hook for magnetic effect
 const useMagnetic = () => {
@@ -84,8 +82,6 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const [showTopBtn, setShowTopBtn] = useState(false);
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
   const [konamiIndex, setKonamiIndex] = useState(0);
   
   // Back to Top Logic
@@ -121,15 +117,6 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     return () => window.removeEventListener('keydown', handler);
   }, [konamiIndex]);
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setTimeout(() => setSubscribed(false), 3000);
-      setEmail("");
-    }
-  };
-
   return (
     <footer className="relative bg-[#050713] pt-20 pb-10 overflow-hidden">
       {/* Background Noise */}
@@ -139,7 +126,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-50 animate-pulse"></div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 max-w-4xl mx-auto">
           
           {/* Brand Column */}
           <div className="space-y-6">
@@ -162,21 +149,6 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <SocialIcon Icon={Github} href="https://github.com/divyansh999-code" />
               <SocialIcon Icon={Linkedin} href="https://www.linkedin.com/in/divyansh-khandal-5b8b8b32b/" />
             </div>
-          </div>
-
-          {/* Product Links */}
-          <div>
-            <h4 className="text-white font-bold mb-6 flex items-center gap-2">
-              <span className="w-1 h-4 bg-cyan-500 rounded-full"></span> Product
-            </h4>
-            <ul className="space-y-3">
-              <li><MagneticLink href="#features" Icon={ArrowRight}>Features</MagneticLink></li>
-              <li>
-                <MagneticLink href="#pricing" Icon={ArrowRight}>
-                  Pricing <span className="ml-2 text-[10px] bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded border border-purple-500/30">Free</span>
-                </MagneticLink>
-              </li>
-            </ul>
           </div>
 
           {/* Company Links */}
@@ -206,37 +178,10 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </ul>
           </div>
 
-          {/* Connect / Newsletter */}
-          <div>
-            <h4 className="text-white font-bold mb-6">Stay Ahead</h4>
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm relative group hover:border-white/20 transition-colors">
-              <p className="text-sm text-gray-400 mb-4">Get the latest interview questions and tips delivered.</p>
-              <form onSubmit={handleSubscribe} className="relative">
-                <input 
-                  type="email" 
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-all placeholder-gray-600"
-                />
-                <button 
-                  type="submit"
-                  className={`absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-lg transition-all duration-300 btn-spring ${subscribed ? 'bg-green-500 text-white' : 'bg-white/10 text-gray-400 hover:bg-cyan-500 hover:text-white'}`}
-                >
-                  {subscribed ? <ArrowRight className="animate-ping absolute inline-flex h-full w-full opacity-75" /> : null}
-                  {subscribed ? <Shield size={16} /> : <ArrowRight size={16} />}
-                </button>
-              </form>
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-500 -z-10"></div>
-            </div>
-          </div>
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} AI Interviewer Pro. All rights reserved.
-          </p>
+        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-end items-center gap-4">
           <div className="flex items-center gap-6">
              <div className="flex items-center gap-1 text-sm text-gray-500">
                Made with <Heart size={14} className="text-red-500 animate-heartbeat fill-red-500" /> by 
