@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Terminal, Github, Linkedin, Heart, 
-  ArrowUp, Mail, ArrowRight, Shield, Globe, Lock, Sparkles
+  ArrowUp, Mail, ArrowRight, Shield, Globe, Sparkles
 } from 'lucide-react';
 import Button from './ui/Button'; 
 import Input from './ui/Input';
@@ -194,8 +194,6 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   About Us
                 </MagneticLink>
               </li>
-              <li><MagneticLink href="#" Icon={Shield}>Privacy Policy</MagneticLink></li>
-              <li><MagneticLink href="#" Icon={Lock}>Terms of Service</MagneticLink></li>
               <li>
                 <MagneticLink 
                   href="#" 
